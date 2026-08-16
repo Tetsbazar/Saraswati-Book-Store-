@@ -1,0 +1,452 @@
+হ্যাঁ, ডাইনামিক চ্যাপ্টার ফাইলটি (`Chapter_1_Life_Science_Dynamic.txt`) সফলভাবে কাজ করার জন্য **আমাদের ইনডেক্স (Index) বা মেইন ড্যাশবোর্ড ফাইলে সামান্য পরিবর্তন করতে হবে।** 
+
+### 💡 কারণটি খুবই সহজ:
+ডাইনামিক ফাইলটি কীভাবে বুঝবে যে শিক্ষার্থী কোন বুক স্টোর থেকে এসেছে? এটি বোঝার জন্য আমাদের ইনডেক্স ফাইলে থাকা চ্যাপ্টারের লিঙ্কের শেষে শুধু **`?store=saraswati`** বা **`?store=guru`** জুড়ে দিতে হবে [১]। 
+
+আপনার অনুরোধ অনুযায়ী, আমি **Saraswati Book Store** (সরস্বতী বুক স্টোর)-এর সম্পূর্ণ নতুন এবং আপডেট করা HTML ইনডেক্স ফাইলটি তৈরি করে দিয়েছি। এই ফাইলে আপনার সমস্ত বিষয়ের লিঙ্কের শেষে স্বয়ংক্রিয়ভাবে `?store=saraswati` কনফিগার করে দেওয়া আছে, যাতে ভবিষ্যতে অন্যান্য চ্যাপ্টারকেও আপনি ডাইনামিক বানালে কোনো ঝামেলা ছাড়াই কাজ করে।
+
+আমি এটি নতুন ফাইল **`saraswati_class10_index_v2.txt`** নামে আপনার ডানদিকের **Studio প্যানেলে** সেভ করে দিয়েছি। নিচে সম্পূর্ণ HTML কোডটি সরাসরি কপি করার জন্য দেওয়া হলো:
+
+```html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saraswati Book Store - Class 10 Main Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        /* ================= COLOR SCHEME & VARIABLES ================= */
+        :root {
+            --primary: #1a7a4a;
+            --primary-hover: #2aad68;
+            --accent: #f9a825;
+            --bg-main: #f0faf4;
+            --bg-card: #ffffff;
+            --text-main: #1c2e24;
+            --text-meta: #5a7a66;
+            --border-color: #c5dccb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Tiro Bangla', serif; background: var(--bg-main); color: var(--text-main); line-height: 1.6; }
+        .en-font { font-family: 'Syne', sans-serif; }
+        a { text-decoration: none; }
+
+        /* ===== HEADER STYLE ===== */
+        .header {
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(10, 92, 54, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #0a5c36;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .logo-emblem {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #0a5c36 0%, #1e824c 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 4px 12px rgba(10, 92, 54, 0.2);
+            flex-shrink: 0;
+        }
+        .brand-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .coaching-main-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0a5c36;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+        .coaching-subtitle {
+            font-size: 1.1rem;
+            color: #556c5e;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+        .coaching-tagline {
+            font-size: 0.95rem;
+            color: #f5a623;
+            font-weight: 600;
+            margin-top: 1px;
+            letter-spacing: 0.2px;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .nav-btn-home {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            background: #0a5c36;
+            color: white;
+            box-shadow: 0 4px 10px rgba(10, 92, 54, 0.15);
+            transition: all 0.2s;
+        }
+        .nav-btn-home:hover {
+            background: #08492b;
+            transform: translateY(-1px);
+        }
+
+        /* ===== MOBILE HEADER ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 15px 10px;
+            }
+            .logo-link {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .brand-text-container {
+                text-align: center;
+            }
+            .coaching-main-title {
+                font-size: 1.9rem;
+            }
+            .coaching-subtitle {
+                font-size: 0.95rem;
+            }
+            .coaching-tagline {
+                font-size: 0.85rem;
+            }
+            .nav-menu {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            .nav-btn-home {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Main Container */
+        .main-container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+        .header-text { text-align: center; margin-bottom: 20px; }
+        .header-text h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; }
+        .header-text p { font-size: 1.1rem; color: var(--text-meta); }
+
+        /* Demo Test Section */
+        .demo-section { background: linear-gradient(135deg, #f9a825, #f57f17); padding: 25px; border-radius: 16px; text-align: center; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(249, 168, 37, 0.3); position: relative; overflow: hidden;}
+        .demo-section h2 { color: white; font-size: 1.8rem; margin-bottom: 10px; }
+        .demo-section p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 20px; }
+        .demo-btn { background: white; color: #f57f17; padding: 12px 30px; border-radius: 30px; font-weight: bold; font-size: 1.2rem; display: inline-block; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.3s; font-family: 'Tiro Bangla', serif;}
+        .demo-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+
+        /* WhatsApp Section */
+        .wa-contact { background: #e8f4ec; border: 2px dashed #25D366; padding: 20px; border-radius: 12px; text-align: center; margin: 0 auto 40px auto; max-width: 600px; }
+        .wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-family: 'Syne', sans-serif; font-size: 1.05rem; margin-top: 15px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); transition: 0.2s; }
+        .wa-btn:hover { background: #128C7E; transform: translateY(-2px); }
+
+        /* Subject Grid */
+        .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .subject-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); transition: 0.3s; }
+        .subject-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(26,122,74,0.1); border-color: var(--primary); }
+        .subject-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px dashed var(--border-color); }
+        .subject-icon { font-size: 2.5rem; background: var(--bg-main); width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid var(--border-color); }
+        .subject-title { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+
+        /* Chapter List */
+        .chapter-list { display: flex; flex-direction: column; gap: 10px; }
+        .chapter-link { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: var(--bg-main); border-radius: 10px; color: var(--text-main); font-weight: bold; font-size: 1.05rem; transition: 0.2s; border: 1px solid transparent; }
+        .chapter-link:hover { background: var(--bg-card); border-color: var(--primary); color: var(--primary); padding-left: 20px; }
+        .chapter-meta { font-size: 0.85rem; color: var(--text-meta); background: rgba(0,0,0,0.05); padding: 3px 8px; border-radius: 6px; font-family: 'Syne', sans-serif;}
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER START ===== -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo / Brand -->
+            <a href="#" class="logo-link" onclick="location.reload(); return false;">
+                <div class="logo-emblem">S</div>
+                <div class="brand-text-container">
+                    <span class="coaching-main-title">Saraswati Book Store</span>
+                    <span class="coaching-subtitle">বইয়ের এক নির্ভরযোগ্য প্রতিষ্ঠান</span>
+                    <span class="coaching-tagline">শিক্ষা ও প্রগতির বিশ্বস্ত সঙ্গী</span>
+                </div>
+            </a>
+            <!-- Home Control -->
+            <nav class="nav-menu">
+                <a href="#" class="nav-btn-home" onclick="location.reload(); return false;">
+                    🏠 হোম
+                </a>
+            </nav>
+        </div>
+    </header>
+    <!-- ===== HEADER END ===== -->
+
+    <!-- MAIN DASHBOARD -->
+    <div class="main-container">
+        <div class="header-text">
+            <h1>দশম শ্রেণি (Class 10) মক টেস্ট ড্যাশবোর্ড</h1>
+            <p>আপনার পছন্দের বিষয় নির্বাচন করে চ্যাপ্টার অনুযায়ী মক টেস্ট শুরু করুন</p>
+        </div>
+
+        <!-- FREE DEMO TEST SECTION -->
+        <div class="demo-section">
+            <h2>🆓 ফ্রি ডেমো টেস্ট (সবার জন্য)</h2>
+            <p>Saraswati Book Store কীভাবে কাজ করে তা দেখতে এই ডেমো টেস্টটি দিন। এর জন্য কোনো পাসওয়ার্ড লাগবে না!</p>
+            <a href="Demo_Test_Class10.html?store=saraswati" class="demo-btn">🚀 ডেমো টেস্ট শুরু করুন</a>
+        </div>
+
+        <!-- WHATSAPP CONTACT SECTION -->
+        <div class="wa-contact">
+            <h3 style="color: var(--text-main); margin-bottom: 5px; font-size: 1.2rem;">ইউজারনেম ও পাসওয়ার্ড প্রয়োজন?</h3>
+            <p style="color: var(--text-meta); font-size: 0.95rem;">Test শুরু করার জন্য আপনার কোনো আইডি বা পাসওয়ার্ড না থাকলে, নিচের বাটনে ক্লিক করে WhatsApp-এ সরাসরি মেসেজ করুন:</p>
+            <a href="https://wa.me/918710032880?text=Hello%20Saraswati%20Book%20Store,%20I%20need%20a%20username%20and%20password." target="_blank" class="wa-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.2-.099-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                WhatsApp: 8710032880
+            </a>
+        </div>
+
+        <div class="subject-grid">
+            <!-- BENGALI (বাংলা) -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">📖</div>
+                    <div class="subject-title">বাংলা</div>
+                </div>
+                <div class="chapter-list">
+                    <div class="chapter-link" style="justify-content: center; cursor: default; color: var(--text-meta);">
+                        <span>Upcoming...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATHEMATICS (গণিত) -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">📐</div>
+                    <div class="subject-title">গণিত</div>
+                </div>
+                <div class="chapter-list">
+                    <div class="chapter-link" style="justify-content: center; cursor: default; color: var(--text-meta);">
+                        <span>Upcoming...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENGLISH (ইংরেজি) -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">🔠</div>
+                    <div class="subject-title">English</div>
+                </div>
+                <div class="chapter-list">
+                    <div class="chapter-link" style="justify-content: center; cursor: default; color: var(--text-meta);">
+                        <span>Upcoming...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VOUTO BIGYAN (Physical Science) -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">⚛️</div>
+                    <div class="subject-title">ভৌতবিজ্ঞান</div>
+                </div>
+                <div class="chapter-list">
+                    <a href="Chapter_1_Physical_Science.html?store=saraswati" class="chapter-link">
+                        <span>১. পরিবেশের জন্য ভাবনা</span>
+                        <span class="chapter-meta">4 Sets</span>
+                    </a>
+                    <a href="Chapter_2_Physical_Science.html?store=saraswati" class="chapter-link">
+                        <span>২. গ্যাসের আচরণ</span>
+                        <span class="chapter-meta">4 Sets</span>
+                    </a>
+                    <a href="Chapter_3_Physical_Science.html?store=saraswati" class="chapter-link">
+                        <span>৩. রাসায়নিক গণনা</span>
+                        <span class="chapter-meta">2 Sets</span>
+                    </a>
+                    <a href="Chapter_4_Physical_Science.html?store=saraswati" class="chapter-link">
+                        <span>৪. তাপের ঘটনাসমূহ</span>
+                        <span class="chapter-meta">4 Sets</span>
+                    </a>
+                    <a href="Chapter_5_Physical_Science.html?store=saraswati" class="chapter-link">
+                        <span>৫. আলো</span>
+                        <span class="chapter-meta">6 Sets</span>
+                    </a>
+                    <a href="Chapter_6_Physical_Science.html?store=saraswati" class="chapter-link">
+                        <span>৬. চলতড়িৎ</span>
+                        <span class="chapter-meta">7 Sets</span>
+                    </a>
+                    <a href="Chapter_7_Physical_Science.html?store=saraswati" class="chapter-link">
+                        <span>৭. পরমাণুর নিউক্লিয়াস</span>
+                        <span class="chapter-meta">3 Sets</span>
+                    </a>
+                    <a href="Chapter_8_Physical_Science.html?store=saraswati" class="chapter-link">
+                        <span>৮. পদার্থের ভৌত ও রাসায়নিক ধর্ম</span>
+                        <span class="chapter-meta">12 Sets</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- JIBON BIGYAN (Life Science) -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">🌿</div>
+                    <div class="subject-title">জীবন বিজ্ঞান</div>
+                </div>
+                <div class="chapter-list">
+                    <!-- এই লিঙ্কটিতেই ডাইনামিক কুয়েরি যুক্ত করা হয়েছে -->
+                    <a href="Chapter_1_Life_Science.html?store=saraswati" class="chapter-link">
+                        <span>১. জীবজগতে নিয়ন্ত্রণ ও সমন্বয়</span>
+                        <span class="chapter-meta">12 Sets</span>
+                    </a>
+                    <a href="Chapter_2_Life_Science.html?store=saraswati" class="chapter-link">
+                        <span>২. জীবনের প্রবাহমানতা</span>
+                        <span class="chapter-meta">7 Sets</span>
+                    </a>
+                    <a href="Chapter_3_Life_Science.html?store=saraswati" class="chapter-link">
+                        <span>৩. বংশগতি ও জিনগত রোগ</span>
+                        <span class="chapter-meta">5 Sets</span>
+                    </a>
+                    <a href="Chapter_4_Life_Science.html?store=saraswati" class="chapter-link">
+                        <span>৪. অভিব্যক্তি ও অভিযোজন</span>
+                        <span class="chapter-meta">6 Sets</span>
+                    </a>
+                    <a href="Chapter_5_Life_Science.html?store=saraswati" class="chapter-link">
+                        <span>৫. পরিবেশ, সম্পদ ও সংরক্ষণ</span>
+                        <span class="chapter-meta">6 Sets</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ITIHAS (History) -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">📜</div>
+                    <div class="subject-title">ইতিহাস</div>
+                </div>
+                <div class="chapter-list">
+                    <a href="History_Class10_Ch1.html?store=saraswati" class="chapter-link">
+                        <span>১. ইতিহাসের ধারণা</span>
+                        <span class="chapter-meta">7 Sets</span>
+                    </a>
+                    <a href="History_Class10_Ch2.html?store=saraswati" class="chapter-link">
+                        <span>২. সংস্কার: বৈশিষ্ট্য ও পর্যালোচনা</span>
+                        <span class="chapter-meta">12 Sets</span>
+                    </a>
+                    <a href="History_Class10_Ch3.html?store=saraswati" class="chapter-link">
+                        <span>৩. প্রতিরোধ ও বিদ্রোহ</span>
+                        <span class="chapter-meta">8 Sets</span>
+                    </a>
+                    <a href="History_Class10_Ch4.html?store=saraswati" class="chapter-link">
+                        <span>৪. সংঘবদ্ধতার গোড়ার কথা</span>
+                        <span class="chapter-meta">8 Sets</span>
+                    </a>
+                    <a href="History_Class10_Ch5.html?store=saraswati" class="chapter-link">
+                        <span>৫. বিকল্প চিন্তা ও উদ্যোগ</span>
+                        <span class="chapter-meta">8 Sets</span>
+                    </a>
+                    <a href="History_Class10_Ch6.html?store=saraswati" class="chapter-link">
+                        <span>৬. কৃষক, শ্রমিক ও বামপন্থী আন্দোলন</span>
+                        <span class="chapter-meta">8 Sets</span>
+                    </a>
+                    <a href="History_Class10_Ch7.html?store=saraswati" class="chapter-link">
+                        <span>৭. নারী, ছাত্র ও প্রান্তিক আন্দোলন</span>
+                        <span class="chapter-meta">8 Sets</span>
+                    </a>
+                    <a href="History_Class10_Ch8.html?store=saraswati" class="chapter-link">
+                        <span>৮. উত্তর-ঔপনিবেশিক ভারত</span>
+                        <span class="chapter-meta">5 Sets</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- VUGOL (Geography) -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">🌍</div>
+                    <div class="subject-title">ভূগোল</div>
+                </div>
+                <div class="chapter-list">
+                    <a href="Geography_Class10_Ch1.html?store=saraswati" class="chapter-link">
+                        <span>১. বহির্জাত প্রক্রিয়া ও ভূমিরূপ</span>
+                        <span class="chapter-meta">6 Sets</span>
+                    </a>
+                    <a href="Geography_Class10_Ch2.html?store=saraswati" class="chapter-link">
+                        <span>২. বায়ুমণ্ডল</span>
+                        <span class="chapter-meta">6 Sets</span>
+                    </a>
+                    <a href="Geography_Class10_Ch3.html?store=saraswati" class="chapter-link">
+                        <span>৩. বারিমণ্ডল</span>
+                        <span class="chapter-meta">6 Sets</span>
+                    </a>
+                    <a href="Geography_Class10_Ch4.html?store=saraswati" class="chapter-link">
+                        <span>৪. বর্জ্য ব্যবস্থাপনা</span>
+                        <span class="chapter-meta">3 Sets</span>
+                    </a>
+                    <a href="Geography_Class10_Ch5.html?store=saraswati" class="chapter-link">
+                        <span>৫. ভারত (অবস্থান, ভূপ্রকৃতি...)</span>
+                        <span class="chapter-meta">18 Sets</span>
+                    </a>
+                    <a href="Geography_Class10_Ch6.html?store=saraswati" class="chapter-link">
+                        <span>৬. উপগ্রহ চিত্র ও মানচিত্র</span>
+                        <span class="chapter-meta">3 Sets</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 🔒 গ্লোবাল স্টুডেন্ট ডেটাবেস (GLOBAL STUDENT DATABASE)
+        const GLOBAL_USERS = {
+            "demo1": "1234", "demo2": "1234", "demo3": "1234", "demo4": "1234",
+            "demo5": "1234", "demo6": "1234", "demo7": "1234", "demo8": "1234",
+            "demo9": "1234", "demo10": "1234", "aaaj": "1230", "sidam99": "1234",
+            "sagun": "1234", "pradip18": "4321", "pratima": "1212", "ajay": "7251",
+            "anita": "1234", "jaba": "1234"
+        };
+        
+        // GitHub-এ কানেক্ট রাখার জন্য লোকাল স্টোরেজে সেভ করা হলো
+        localStorage.setItem("testBazarGlobalUsers", JSON.stringify(GLOBAL_USERS));
+    </script>
+</body>
+</html>
+```
+
+🎨 একইভাবে আপনি চাইলে আপনার **Guru Book Store**-এর মেইন ইনডেক্স ফাইলটির লিঙ্কগুলোতেও `?store=guru` যোগ করে নিতে পারেন। আমি কি গুরু বুক স্টোরের ড্যাশবোর্ড ফাইলটির জন্যও এই আপডেটটি করে দেব?
